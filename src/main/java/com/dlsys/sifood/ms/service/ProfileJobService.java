@@ -1,16 +1,12 @@
-package com.dlsys.sifood.ms.service.profileJob;
+package com.dlsys.sifood.ms.service;
 
 import com.dlsys.sifood.ms.dao.IProfileJobDao;
-import com.dlsys.sifood.ms.dto.GenericResponse;
-import com.dlsys.sifood.ms.dto.ProfileJobResponse;
 import com.dlsys.sifood.ms.entity.ProfileJob;
 import com.dlsys.sifood.ms.model.SearchModel;
-import com.dlsys.sifood.ms.service.GenericService;
-import com.dlsys.sifood.ms.service.ResponseService;
-import com.dlsys.sifood.ms.service.profileJob.IProfileJobService;
+import com.dlsys.sifood.ms.response.EntityResponse;
+import com.dlsys.sifood.ms.service.impl.IProfileJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -21,8 +17,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class ProfileJobService implements IProfileJobService {
@@ -33,37 +27,37 @@ public class ProfileJobService implements IProfileJobService {
     @Override
     public ResponseEntity<?> postPorfile(ProfileJob profile, BindingResult result) {
         if(result.hasErrors()){
-            return GenericService.getErrorsFieldResponse(result);
+            return EntityResponse.getErrorsFieldResponse(result);
         }
         try {
             List<ProfileJob> profileExist = profileDao.findByName(profile.getName());
             if (profileExist.isEmpty()) {
                 profileDao.save(profile);
             } else {
-                return GenericService.getErrorCustomMessage("el dato ya se encuentra registado");
+                return EntityResponse.getErrorCustomMessage("el dato ya se encuentra registado");
             }
         }catch (RuntimeException e){
             throw new RuntimeException(e);
         }
-        return GenericService.getSuccessfullProfileJob(profile);
+        return EntityResponse.getSuccessfullProfileJob(profile);
     }
 
     @Override
     public ResponseEntity<?> putPorfile(ProfileJob profile, BindingResult result) {
         if(result.hasErrors()){
-            return GenericService.getErrorsFieldResponse(result);
+            return EntityResponse.getErrorsFieldResponse(result);
         }
         try {
             List<ProfileJob> profileExist = profileDao.findByName(profile.getName());
             if (profileExist.isEmpty()) {
                 profileDao.save(profile);
             } else {
-                return GenericService.getErrorCustomMessage("el dato ya se encuentra registado");
+                return EntityResponse.getErrorCustomMessage("el dato ya se encuentra registado");
             }
         }catch (RuntimeException e){
             throw new RuntimeException(e);
         }
-        return GenericService.getSuccessfullProfileJob(profile);
+        return EntityResponse.getSuccessfullProfileJob(profile);
     }
 
     @Override
@@ -87,9 +81,9 @@ public class ProfileJobService implements IProfileJobService {
             throw new RuntimeException(e);
         }
         if(response.isEmpty()){
-            return GenericService.getErrorCustomMessage("perfil no encontrado");
+            return EntityResponse.getErrorCustomMessage("perfil no encontrado");
         }
-        return GenericService.getSuccessfullListProfileJob(response);
+        return EntityResponse.getSuccessfullListProfileJob(response);
     }
 
 }

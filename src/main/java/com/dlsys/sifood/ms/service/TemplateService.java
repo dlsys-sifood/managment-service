@@ -1,13 +1,10 @@
-package com.dlsys.sifood.ms.service.template;
+package com.dlsys.sifood.ms.service;
 
 import com.dlsys.sifood.ms.dao.ITemplateDao;
-import com.dlsys.sifood.ms.dto.GenericResponse;
-import com.dlsys.sifood.ms.dto.TemplateResponse;
 import com.dlsys.sifood.ms.entity.Template;
 import com.dlsys.sifood.ms.model.TemplateModel;
-import com.dlsys.sifood.ms.service.GenericService;
-import com.dlsys.sifood.ms.service.ResponseService;
-import com.dlsys.sifood.ms.service.template.ITemplateService;
+import com.dlsys.sifood.ms.response.EntityResponse;
+import com.dlsys.sifood.ms.service.impl.ITemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -21,8 +18,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class TemplateService implements ITemplateService {
@@ -39,37 +34,37 @@ public class TemplateService implements ITemplateService {
     @Override
     public ResponseEntity<?> postTemplate(Template template, BindingResult result) {
         if(result.hasErrors()){
-            return GenericService.getErrorsFieldResponse(result);
+            return EntityResponse.getErrorsFieldResponse(result);
         }
         try {
             List<Template> templateExist = templateDao.findByName(template.getName());
             if (templateExist.isEmpty()) {
                 templateDao.save(template);
             } else {
-                return GenericService.getErrorCustomMessage("el dato ya se encuentra registado");
+                return EntityResponse.getErrorCustomMessage("el dato ya se encuentra registado");
             }
         }catch (RuntimeException e){
             throw new RuntimeException(e);
         }
-        return GenericService.getSuccessfullTemplate(template);
+        return EntityResponse.getSuccessfullTemplate(template);
     }
 
     @Override
     public ResponseEntity<?> putTemplate(Template template, BindingResult result) {
         if(result.hasErrors()){
-            return GenericService.getErrorsFieldResponse(result);
+            return EntityResponse.getErrorsFieldResponse(result);
         }
         try {
             List<Template> templateExist = templateDao.findByName(template.getName());
             if (templateExist.isEmpty()) {
                 templateDao.save(template);
             } else {
-                return GenericService.getErrorCustomMessage("el dato ya se encuentra registado");
+                return EntityResponse.getErrorCustomMessage("el dato ya se encuentra registado");
             }
         }catch (RuntimeException e){
             throw new RuntimeException(e);
         }
-        return GenericService.getSuccessfullTemplate(template);
+        return EntityResponse.getSuccessfullTemplate(template);
     }
 
     @Override
@@ -96,8 +91,8 @@ public class TemplateService implements ITemplateService {
             throw new RuntimeException(e);
         }
         if(response.isEmpty()){
-            return GenericService.getErrorCustomMessage("consutal no encontrada");
+            return EntityResponse.getErrorCustomMessage("consutal no encontrada");
         }
-        return GenericService.getSuccessfullListTemplate(response);
+        return EntityResponse.getSuccessfullListTemplate(response);
     }
 }

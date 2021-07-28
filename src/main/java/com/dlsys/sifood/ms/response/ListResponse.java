@@ -1,4 +1,4 @@
-package com.dlsys.sifood.ms.service;
+package com.dlsys.sifood.ms.response;
 
 import com.dlsys.sifood.ms.dto.GenericResponse;
 import com.dlsys.sifood.ms.dto.ProfileJobResponse;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class ResponseService {
+public class ListResponse {
 
     public static Map<String, Object> responseGeneric(GenericResponse generic){
         Map<String, Object> response = new HashMap<>();
