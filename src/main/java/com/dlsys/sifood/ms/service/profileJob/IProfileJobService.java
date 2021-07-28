@@ -1,4 +1,4 @@
-package com.dlsys.sifood.ms.service;
+package com.dlsys.sifood.ms.service.profileJob;
 
 import com.dlsys.sifood.ms.entity.ProfileJob;
 import com.dlsys.sifood.ms.model.SearchModel;

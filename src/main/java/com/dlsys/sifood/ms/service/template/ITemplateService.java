@@ -1,4 +1,4 @@
-package com.dlsys.sifood.ms.service;
+package com.dlsys.sifood.ms.service.template;
 
 import com.dlsys.sifood.ms.entity.Template;;
 import com.dlsys.sifood.ms.model.TemplateModel;

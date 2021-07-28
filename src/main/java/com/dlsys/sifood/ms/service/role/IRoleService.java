@@ -1,4 +1,4 @@
-package com.dlsys.sifood.ms.service;
+package com.dlsys.sifood.ms.service.role;
 
 import com.dlsys.sifood.ms.entity.Role;
 import com.dlsys.sifood.ms.model.SearchModel;

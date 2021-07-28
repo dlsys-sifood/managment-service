@@ -1,10 +1,9 @@
 package com.dlsys.sifood.ms.controller;
 
 
-import com.dlsys.sifood.ms.entity.ProfileJob;
 import com.dlsys.sifood.ms.entity.Role;
 import com.dlsys.sifood.ms.model.SearchModel;
-import com.dlsys.sifood.ms.service.IRoleService;
+import com.dlsys.sifood.ms.service.role.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
