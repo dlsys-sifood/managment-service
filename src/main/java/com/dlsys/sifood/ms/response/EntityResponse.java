@@ -20,6 +20,9 @@ public class EntityResponse {
     private static final String BADREQUESTCODE = HttpStatus.BAD_REQUEST.toString();
     private static final String BADREQUESTDESCRIPTION = "BAD REQUEST";
 
+    private static final String NOTFOUNDCODE = HttpStatus.NOT_FOUND.toString();
+    private static final String NOTFOUNDDESCRIPTION = "NOT FOUND";
+
     private static final String OKREQUESTCODE = HttpStatus.OK.toString();
     private static final String OKREQUESTDESCRIPTION = "OK";
 
@@ -36,6 +39,13 @@ public class EntityResponse {
         return new ResponseEntity<Map<String, Object>>(ListResponse
                 .responseGeneric(new GenericResponse(BADREQUESTCODE, BADREQUESTDESCRIPTION,
                         GenericResponse.toList(custom)))
+                , HttpStatus.BAD_REQUEST);
+    }
+
+    public static ResponseEntity<?> getNotFoundMessage(){
+        return new ResponseEntity<Map<String, Object>>(ListResponse
+                .responseGeneric(new GenericResponse(NOTFOUNDCODE, NOTFOUNDDESCRIPTION,
+                        GenericResponse.toList("consulta no encontrada")))
                 , HttpStatus.BAD_REQUEST);
     }
 

@@ -2,7 +2,7 @@ package com.dlsys.sifood.ms.controller;
 
 import com.dlsys.sifood.ms.entity.Template;
 import com.dlsys.sifood.ms.model.TemplateModel;
-import com.dlsys.sifood.ms.service.impl.ITemplateService;
+import com.dlsys.sifood.ms.service.ITemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.validation.Valid;
 
+@EnableSwagger2
 @RestController
 @RequestMapping(value = "/template")
 public class TemplateController {

@@ -1,10 +1,10 @@
-package com.dlsys.sifood.ms.service;
+package com.dlsys.sifood.ms.service.impl;
 
 import com.dlsys.sifood.ms.dao.ITemplateDao;
 import com.dlsys.sifood.ms.entity.Template;
 import com.dlsys.sifood.ms.model.TemplateModel;
 import com.dlsys.sifood.ms.response.EntityResponse;
-import com.dlsys.sifood.ms.service.impl.ITemplateService;
+import com.dlsys.sifood.ms.service.ITemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -21,12 +21,6 @@ import java.util.List;
 
 @Service
 public class TemplateService implements ITemplateService {
-
-    private static final String BADREQUESTCODE = HttpStatus.BAD_REQUEST.toString();
-    private static final String BADREQUESTDESCRIPTION = "BAD REQUEST";
-
-    private static final String OKREQUESTCODE = HttpStatus.OK.toString();
-    private static final String OKREQUESTDESCRIPTION = "OK";
 
     @Autowired
     ITemplateDao templateDao;
@@ -91,7 +85,7 @@ public class TemplateService implements ITemplateService {
             throw new RuntimeException(e);
         }
         if(response.isEmpty()){
-            return EntityResponse.getErrorCustomMessage("consutal no encontrada");
+            return EntityResponse.getNotFoundMessage();
         }
         return EntityResponse.getSuccessfullListTemplate(response);
     }
