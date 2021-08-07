@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SearchModel {
-    private String id;
-    private String name;
+    private String id="";
+    private String name="";
 }

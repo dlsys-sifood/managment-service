@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TemplateModel extends SearchModel{
-    private String url;
+    private String url="";
 }
